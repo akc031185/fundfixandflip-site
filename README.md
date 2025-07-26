@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fund Fix & Flip - Real Estate Investment Financing
+
+A professional website for fix and flip real estate investment financing, built with Next.js and Tailwind CSS.
+
+## Features
+
+- **Fast Financing Solutions**: Quick approval process with competitive rates
+- **Interactive ROI Calculator**: Calculate potential returns on fix & flip investments
+- **Professional Application Forms**: Comprehensive funding application system
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **SEO Optimized**: Built for search engine visibility
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+- **Domain**: fundfixandflip.com
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/akc031185/fundfixandflip-site.git
+cd fundfixandflip-site
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+### Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── calculator/          # ROI calculator page
+│   ├── contact/             # Contact/application page
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Homepage
+└── components/
+    ├── AboutSection.tsx     # Features and process section
+    ├── ContactCTA.tsx       # Call-to-action section
+    ├── ContactForm.tsx      # Funding application form
+    ├── Header.tsx           # Navigation header
+    ├── HeroSection.tsx      # Hero section with quick form
+    └── PropertyCalculator.tsx # Interactive ROI calculator
+```
 
-## Deploy on Vercel
+## Key Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Homepage** (`/`): Hero section, features, and call-to-action
+- **Calculator** (`/calculator`): Interactive fix & flip ROI calculator
+- **Contact** (`/contact`): Comprehensive funding application form
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+This project is deployed on Vercel and accessible at [fundfixandflip.com](https://fundfixandflip.com).
+
+## Contact Information
+
+- **Phone**: (855) FUND-FIX
+- **Email**: funding@fundfixandflip.com
+
+## License
+
+© 2024 Fund Fix & Flip. All rights reserved.
