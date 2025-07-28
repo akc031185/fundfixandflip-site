@@ -1,4 +1,4 @@
-# Fund Fix & Flip - Real Estate Investment Financing
+# Fund Your Fix & Flip - Real Estate Investment Financing
 
 A professional website for fix and flip real estate investment financing, built with Next.js and Tailwind CSS.
 
@@ -16,7 +16,7 @@ A professional website for fix and flip real estate investment financing, built 
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Deployment**: Vercel
-- **Domain**: fundfixandflip.com
+- **Domain**: fundyourfixandflip.com
 
 ## Getting Started
 
@@ -78,13 +78,13 @@ src/
 
 ## Deployment
 
-This project is deployed on Vercel and accessible at [fundfixandflip.com](https://fundfixandflip.com).
+This project is deployed on Vercel and accessible at [fundyourfixandflip.com](https://fundyourfixandflip.com).
 
 ## Contact Information
 
 - **Phone**: (855) FUND-FIX
-- **Email**: funding@fundfixandflip.com
+- **Email**: funding@fundyourfixandflip.com
 
 ## License
 
-© 2024 Fund Fix & Flip. All rights reserved.
+© 2024 Fund Your Fix & Flip. All rights reserved.

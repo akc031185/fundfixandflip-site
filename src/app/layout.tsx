@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fund Fix & Flip - Fast Real Estate Investment Financing",
+  title: "Fund Your Fix & Flip - Fast Real Estate Investment Financing",
   description: "Get fast, flexible financing for your fix and flip projects. Up to 90% LTV, 24-48 hour approval, competitive rates starting at 9.5% APR.",
   keywords: "fix and flip financing, real estate investment loans, hard money lending, property rehab loans",
 };

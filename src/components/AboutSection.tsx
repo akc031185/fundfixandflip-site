@@ -56,7 +56,7 @@ export default function AboutSection() {
         {/* Features Grid */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Why Choose Fund Fix & Flip?
+            Why Choose Fund Your Fix & Flip?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We understand the fix and flip business. Our financing solutions are designed 

@@ -12,7 +12,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-blue-900">
-              Fund<span className="text-yellow-500">Fix&Flip</span>
+              Fund<span className="text-yellow-500">YourFix&Flip</span>
             </div>
           </Link>
 

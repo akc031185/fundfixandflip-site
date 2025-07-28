@@ -33,8 +33,8 @@ export default function ContactCTA() {
               </div>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-yellow-400">📧</span>
-                <a href="mailto:funding@fundfixandflip.com" className="text-xl hover:text-yellow-400 transition-colors">
-                  funding@fundfixandflip.com
+                <a href="mailto:funding@fundyourfixandflip.com" className="text-xl hover:text-yellow-400 transition-colors">
+                  funding@fundyourfixandflip.com
                 </a>
               </div>
             </div>

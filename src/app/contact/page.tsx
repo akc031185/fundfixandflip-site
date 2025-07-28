@@ -70,8 +70,8 @@ export default function ContactPage() {
                   <span className="text-yellow-400">📧</span>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <a href="mailto:funding@fundfixandflip.com" className="text-yellow-400 hover:text-yellow-300">
-                      funding@fundfixandflip.com
+                    <a href="mailto:funding@fundyourfixandflip.com" className="text-yellow-400 hover:text-yellow-300">
+                      funding@fundyourfixandflip.com
                     </a>
                   </div>
                 </div>
