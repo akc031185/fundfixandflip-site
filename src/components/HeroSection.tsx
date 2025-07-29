@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import QuickApplicationForm from './QuickApplicationForm'
 
 export default function HeroSection() {
   return (
@@ -41,39 +42,7 @@ export default function HeroSection() {
           </div>
 
           <div className="lg:text-right">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold mb-6">Quick Application</h3>
-              <form className="space-y-4">
-                <input 
-                  type="text" 
-                  placeholder="Full Name" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400"
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email Address" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400"
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Phone Number" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400"
-                />
-                <select className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:border-yellow-400">
-                  <option value="">Loan Amount Needed</option>
-                  <option value="50k-100k">$50K - $100K</option>
-                  <option value="100k-250k">$100K - $250K</option>
-                  <option value="250k-500k">$250K - $500K</option>
-                  <option value="500k+">$500K+</option>
-                </select>
-                <button 
-                  type="submit" 
-                  className="w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors"
-                >
-                  Get Pre-Approved
-                </button>
-              </form>
-            </div>
+            <QuickApplicationForm />
           </div>
         </div>
       </div>

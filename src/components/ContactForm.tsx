@@ -25,11 +25,52 @@ export default function ContactForm() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Here you would typically send the data to your backend
-    alert('Application submitted! We will contact you within 24 hours.')
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/applications/funding', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          loanAmount: '',
+          propertyAddress: '',
+          purchasePrice: '',
+          rehabBudget: '',
+          arv: '',
+          experience: '',
+          timeline: '',
+          message: ''
+        })
+      } else {
+        console.error('Error submitting application:', result.error)
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Network error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -198,11 +239,30 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
+      {submitStatus === 'success' && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+          <strong>Application Submitted Successfully!</strong>
+          <p>Thank you for your application. We will review it and contact you within 24-48 hours.</p>
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          <strong>Error Submitting Application</strong>
+          <p>There was an error submitting your application. Please try again or contact us directly.</p>
+        </div>
+      )}
+
       <button
         type="submit"
-        className="w-full bg-blue-900 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-colors"
+        disabled={isSubmitting}
+        className={`w-full py-4 rounded-lg font-semibold text-lg transition-colors ${
+          isSubmitting 
+            ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+            : 'bg-blue-900 text-white hover:bg-blue-800'
+        }`}
       >
-        Submit Application
+        {isSubmitting ? 'Submitting...' : 'Submit Application'}
       </button>
 
       <p className="text-sm text-gray-600 text-center">
