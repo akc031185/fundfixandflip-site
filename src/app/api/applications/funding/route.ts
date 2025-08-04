@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import dbConnect from '@/lib/mongodb'
 import FundingApplication from '@/models/FundingApplication'
+import { sendFundingApplicationEmail } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -36,6 +37,29 @@ export async function POST(request: NextRequest) {
     })
 
     const savedApplication = await application.save()
+
+    // Send email notification
+    try {
+      await sendFundingApplicationEmail({
+        firstName,
+        lastName,
+        email,
+        phone,
+        loanAmount,
+        propertyAddress: body.propertyAddress,
+        purchasePrice: body.purchasePrice,
+        rehabBudget: body.rehabBudget,
+        arv: body.arv,
+        experience: body.experience,
+        timeline: body.timeline,
+        message: body.message,
+        applicationId: savedApplication._id.toString()
+      })
+      console.log('Email notification sent successfully')
+    } catch (emailError) {
+      console.error('Failed to send email notification:', emailError)
+      // Don't fail the application if email fails, just log it
+    }
 
     return NextResponse.json({
       success: true,

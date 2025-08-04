@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import dbConnect from '@/lib/mongodb'
 import QuickApplication from '@/models/QuickApplication'
+import { sendQuickApplicationEmail } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,6 +29,21 @@ export async function POST(request: NextRequest) {
     })
 
     const savedApplication = await application.save()
+
+    // Send email notification
+    try {
+      await sendQuickApplicationEmail({
+        fullName,
+        email,
+        phone,
+        loanAmount,
+        applicationId: savedApplication._id.toString()
+      })
+      console.log('Quick application email notification sent successfully')
+    } catch (emailError) {
+      console.error('Failed to send quick application email notification:', emailError)
+      // Don't fail the application if email fails, just log it
+    }
 
     return NextResponse.json({
       success: true,
