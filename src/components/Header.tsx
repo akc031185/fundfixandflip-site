@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import Logo, { LogoCompact } from './Logo'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -10,9 +11,15 @@ export default function Header() {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-blue-900">
-              Fund<span className="text-yellow-500">YourFix&Flip</span>
+          <Link href="/" className="flex items-center">
+            {/* Desktop Logo */}
+            <div className="hidden sm:block">
+              <Logo width={200} height={55} />
+            </div>
+            
+            {/* Mobile Logo */}
+            <div className="block sm:hidden">
+              <LogoCompact width={140} height={40} />
             </div>
           </Link>
 
