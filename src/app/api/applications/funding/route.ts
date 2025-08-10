@@ -10,9 +10,24 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     
     // Validate required fields
-    const { firstName, lastName, email, phone, loanAmount } = body
+    const { 
+      firstName, 
+      lastName, 
+      email, 
+      phone, 
+      loanAmount, 
+      propertyType,
+      purchasePrice,
+      propertyOwned,
+      rehabBudget,
+      arv,
+      ficoScore,
+      groundUpDeals,
+      flipDeals,
+      rentalsOwned
+    } = body
     
-    if (!firstName || !lastName || !email || !phone || !loanAmount) {
+    if (!firstName || !lastName || !email || !phone || !loanAmount || !propertyType || !purchasePrice || !propertyOwned || !rehabBudget || !arv || !ficoScore || !groundUpDeals || !flipDeals || !rentalsOwned) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -26,10 +41,17 @@ export async function POST(request: NextRequest) {
       email,
       phone,
       loanAmount,
+      propertyType,
       propertyAddress: body.propertyAddress || '',
-      purchasePrice: body.purchasePrice || '',
-      rehabBudget: body.rehabBudget || '',
-      arv: body.arv || '',
+      purchasePrice,
+      propertyOwned,
+      rehabBudget,
+      photos: body.photos || [],
+      arv,
+      ficoScore,
+      groundUpDeals,
+      flipDeals,
+      rentalsOwned,
       experience: body.experience || '',
       timeline: body.timeline || '',
       message: body.message || '',
@@ -46,10 +68,16 @@ export async function POST(request: NextRequest) {
         email,
         phone,
         loanAmount,
+        propertyType,
         propertyAddress: body.propertyAddress,
-        purchasePrice: body.purchasePrice,
-        rehabBudget: body.rehabBudget,
-        arv: body.arv,
+        purchasePrice,
+        propertyOwned,
+        rehabBudget,
+        arv,
+        ficoScore,
+        groundUpDeals,
+        flipDeals,
+        rentalsOwned,
         experience: body.experience,
         timeline: body.timeline,
         message: body.message,

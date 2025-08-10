@@ -28,11 +28,17 @@ interface FundingApplicationEmail {
   lastName: string;
   email: string;
   phone: string;
-  loanAmount: number;
+  loanAmount: string;
+  propertyType?: string;
   propertyAddress?: string;
-  purchasePrice?: number;
-  rehabBudget?: number;
-  arv?: number;
+  purchasePrice?: string;
+  propertyOwned?: string;
+  rehabBudget?: string;
+  arv?: string;
+  ficoScore?: string;
+  groundUpDeals?: string;
+  flipDeals?: string;
+  rentalsOwned?: string;
   experience?: string;
   timeline?: string;
   message?: string;
@@ -54,10 +60,16 @@ export async function sendFundingApplicationEmail(applicationData: FundingApplic
     email,
     phone,
     loanAmount,
+    propertyType,
     propertyAddress,
     purchasePrice,
+    propertyOwned,
     rehabBudget,
     arv,
+    ficoScore,
+    groundUpDeals,
+    flipDeals,
+    rentalsOwned,
     experience,
     timeline,
     message,
@@ -95,12 +107,17 @@ export async function sendFundingApplicationEmail(applicationData: FundingApplic
         </div>
 
         <div style="margin-bottom: 25px;">
-          <h3 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-bottom: 15px;">💰 Loan Details</h3>
+          <h3 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-bottom: 15px;">💰 Loan & Property Details</h3>
           <table style="width: 100%; border-collapse: collapse;">
             <tr style="border-bottom: 1px solid #ecf0f1;">
               <td style="padding: 8px 0; font-weight: bold; width: 40%;">Loan Amount:</td>
-              <td style="padding: 8px 0; color: #27ae60; font-weight: bold; font-size: 18px;">$${loanAmount.toLocaleString()}</td>
+              <td style="padding: 8px 0; color: #27ae60; font-weight: bold; font-size: 18px;">${loanAmount}</td>
             </tr>
+            ${propertyType ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold;">Property Type:</td>
+              <td style="padding: 8px 0;">${propertyType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+            </tr>` : ''}
             ${propertyAddress ? `
             <tr style="border-bottom: 1px solid #ecf0f1;">
               <td style="padding: 8px 0; font-weight: bold;">Property Address:</td>
@@ -109,28 +126,52 @@ export async function sendFundingApplicationEmail(applicationData: FundingApplic
             ${purchasePrice ? `
             <tr style="border-bottom: 1px solid #ecf0f1;">
               <td style="padding: 8px 0; font-weight: bold;">Purchase Price:</td>
-              <td style="padding: 8px 0;">$${purchasePrice.toLocaleString()}</td>
+              <td style="padding: 8px 0;">$${purchasePrice}</td>
+            </tr>` : ''}
+            ${propertyOwned ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold;">Property Already Owned:</td>
+              <td style="padding: 8px 0;">${propertyOwned.toUpperCase()}</td>
             </tr>` : ''}
             ${rehabBudget ? `
             <tr style="border-bottom: 1px solid #ecf0f1;">
               <td style="padding: 8px 0; font-weight: bold;">Rehab Budget:</td>
-              <td style="padding: 8px 0;">$${rehabBudget.toLocaleString()}</td>
+              <td style="padding: 8px 0;">$${rehabBudget}</td>
             </tr>` : ''}
             ${arv ? `
             <tr style="border-bottom: 1px solid #ecf0f1;">
               <td style="padding: 8px 0; font-weight: bold;">After Repair Value:</td>
-              <td style="padding: 8px 0;">$${arv.toLocaleString()}</td>
+              <td style="padding: 8px 0;">$${arv}</td>
             </tr>` : ''}
           </table>
         </div>
 
-        ${experience || timeline ? `
         <div style="margin-bottom: 25px;">
-          <h3 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-bottom: 15px;">📋 Additional Information</h3>
+          <h3 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-bottom: 15px;">📊 Financial & Experience Details</h3>
           <table style="width: 100%; border-collapse: collapse;">
+            ${ficoScore ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold; width: 40%;">FICO Score:</td>
+              <td style="padding: 8px 0;">${ficoScore}</td>
+            </tr>` : ''}
+            ${groundUpDeals ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold;">Ground Up Deals (4 years):</td>
+              <td style="padding: 8px 0;">${groundUpDeals}</td>
+            </tr>` : ''}
+            ${flipDeals ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold;">Fix/Flip Deals (3 years):</td>
+              <td style="padding: 8px 0;">${flipDeals}</td>
+            </tr>` : ''}
+            ${rentalsOwned ? `
+            <tr style="border-bottom: 1px solid #ecf0f1;">
+              <td style="padding: 8px 0; font-weight: bold;">Rentals Owned (1+ years):</td>
+              <td style="padding: 8px 0;">${rentalsOwned}</td>
+            </tr>` : ''}
             ${experience ? `
             <tr style="border-bottom: 1px solid #ecf0f1;">
-              <td style="padding: 8px 0; font-weight: bold; width: 40%;">Experience:</td>
+              <td style="padding: 8px 0; font-weight: bold;">Overall Experience:</td>
               <td style="padding: 8px 0;">${experience}</td>
             </tr>` : ''}
             ${timeline ? `
@@ -139,7 +180,7 @@ export async function sendFundingApplicationEmail(applicationData: FundingApplic
               <td style="padding: 8px 0;">${timeline}</td>
             </tr>` : ''}
           </table>
-        </div>` : ''}
+        </div>
 
         ${message ? `
         <div style="margin-bottom: 25px;">
@@ -171,7 +212,7 @@ export async function sendFundingApplicationEmail(applicationData: FundingApplic
   const mailOptions = {
     from: process.env.SMTP_USER,
     to: 'funding@fundyourfixandflip.com',
-    subject: `🏠 New Funding Application - $${loanAmount.toLocaleString()} - ${firstName} ${lastName}`,
+    subject: `🏠 New Funding Application - ${loanAmount} - ${firstName} ${lastName}`,
     html: htmlContent,
   };
 
